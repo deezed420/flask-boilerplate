@@ -6,7 +6,7 @@ config = {                                          # The config of the project
     'Host' : 'localhost',                           # The host of the server
     'Port' : 80,                                    # The port of the server
     'Dev'  : True,                                  # If it is in dev mode
-    'App?' : True,                                  # If it is a GUI App
+    'App'  : True,                                  # If it is a GUI App
 }
 
 routing: dict[str, routes.FlaskRouteFunction] = {   # The routes of the project
@@ -15,5 +15,5 @@ routing: dict[str, routes.FlaskRouteFunction] = {   # The routes of the project
 
 for url, func in routing.items(): app.add_url_rule(url, view_func=func)
 
-if config['App?']: import webview ; webview.create_window(config['Title'], app) ; webview.start()
+if config['App']: import webview ; webview.create_window(config['Title'], app) ; webview.start()
 else: app.run(config['Host'], config['Port'], config['Dev'])
